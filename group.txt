@@ -3,14 +3,17 @@ SELECT YEAR(`students`.`enrolment_date`) as `anno`, COUNT(`students`.`id`) as `n
 FROM `students`
 GROUP BY YEAR(`students`.`enrolment_date`);
 
-2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio;
 SELECT `teachers`.`office_address` AS `ufficio`, COUNT(`id`) AS `numero_insegnanti`
 FROM `teachers`
 GROUP BY `office_address`;
 
-3. Calcolare la media dei voti di ogni appello d'esame
+3. Calcolare la media dei voti di ogni appello d'esame;
 SELECT `exam_student`.`exam_id` as `esame`, AVG(`vote`) AS `media_voti_esame`
 FROM `exam_student`
 GROUP BY `exam_student`.`exam_id`;
 
-4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+4. Contare quanti corsi di laurea ci sono per ogni dipartimento;
+SELECT `degrees`.`department_id` as `dipartimento`, COUNT(`degrees`.`id`) AS `numero_corsi`
+FROM `degrees`
+GROUP BY `degrees`.`department_id`;
