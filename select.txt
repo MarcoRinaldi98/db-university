@@ -38,3 +38,40 @@ FROM `departments`;
 SELECT COUNT(`id`) AS `numero_insegnanti_senza_telefono`
 FROM `teachers` 
 WHERE `phone` IS NULL;
+
+BONUS:
+1. Seleziona gli studenti che si chiamano “Rocco” o “Marina”;
+SELECT * 
+FROM `students` 
+WHERE `name` = 'Rocco' OR `name` = 'Marina';
+
+2. Seleziona gli studenti che hanno una mail di Gmail
+SELECT * 
+FROM `students` 
+WHERE `email` LIKE '%@gmail.com';
+
+3. Seleziona gli studenti il cui cognome termina in “ini”;
+SELECT * 
+FROM `students` 
+WHERE `surname` LIKE '%ini';
+
+4. Quanti insegnanti hanno un telefono che finisce in 927 o contiene 279?;
+SELECT COUNT(`id`) AS `numero_insegnanti_con_telefono_927_279`
+FROM `teachers` 
+WHERE `phone` LIKE '%927%' OR `phone` LIKE '%279%';
+
+5. Quanti studenti hanno sostenuto l’esame con id=1?
+SELECT COUNT(`student_id`) AS `numero_studenti_id1`
+FROM `exam_student`
+WHERE `student_id` = 1;
+
+6. Quali esami sono stati sostenuti il 2020-09-04 e il 2020-02-07 tra le 14.00 e le 18.00 ?
+SELECT *
+FROM `exams`
+WHERE `date` = '2020-09-04' AND HOUR(`hour`) BETWEEN '14' AND '18' OR `date` = '2020-02-07' AND HOUR(`hour`) BETWEEN '14' AND '18';
+
+
+7. Quali dipartimenti rispondono telefonicamente dall’Italia?
+SELECT `name`, `phone`
+FROM `departments`
+WHERE `phone` LIKE '+39%';
